@@ -7,9 +7,11 @@ import { JOGame } from '../helpers/interface';
 const DataPage: React.FC = () => {
   const [JOgames, setJOGames] = useState<JOGame[]>([])
 
+  // Requêtage du server
   useEffect(() => {
     axios.get('http://localhost:8080/games')
       .then(response => {
+        // Stockage des données récupérées dans la variable "JOGames"
         setJOGames(response.data);
       })
       .catch(error => {
