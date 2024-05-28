@@ -5,6 +5,7 @@ import Home from './components/home'
 import ProjectSummary from './components/projectsummary'
 import TeamPresentation from './components/team'
 import DataPage from '../src/pages/data'
+import PredictionPage from './components/prediction/prediction'
 
 const App: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const App: React.FC = () => {
           <Route path="/data" element={<DataPage />} />
           <Route path="/#about" element={<ProjectSummary />} />
           <Route path="/#contact" element={<TeamPresentation />} />
-          <Route path="/prediction" element={<TeamPresentation />} />
+          <Route path="/prediction" element={<PredictionPage />} />
         </Routes>
       </Layout>
     </Router>
