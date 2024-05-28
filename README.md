@@ -41,4 +41,4 @@ python main.py
      "prec_game_gold": 39,
      "prec_game_silver": 41,
      "prec_game_bronze": 33
-  ```
+    ```
