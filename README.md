@@ -11,7 +11,12 @@ Il contient le code pour l'entraînement de 3 modèles de Deep Learning:
 - Un DNN
 
 ### Machine Learning
-Le notebook de Machine Learning est disponible dans le dossier `./notebooks/machine_learning_models.ipynb/`.
+Le notebook de Machine Learning est disponible dans le dossier `./machinelearning/` et s'appelle `train_ml.ipynb`.
+
+Il contient le code pour l'entraînement de 3 modèles de Machine Learning:
+- Un modèle de Linear Regression
+- Un modèle de Decision Tree Regressor
+- Un modèle de Gradient Boosting Regressor
 
 ### Spark
 Le notebook de Spark est disponible dans le dossier `./volume_spark/spark_data_treatment.py`.
