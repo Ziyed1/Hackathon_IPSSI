@@ -1,26 +1,13 @@
-import React, { useState } from 'react';
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  NavbarToggler,
-  Collapse,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
-import '../index.css'; // Importer un fichier CSS pour les styles supplémentaires
+import React, { useState } from 'react'
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import '../index.css' // Importer un fichier CSS pour les styles supplémentaires
 
 const MyNavbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  const toggle = () => setIsOpen(!isOpen);
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+  const toggle = () => setIsOpen(!isOpen)
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
 
   return (
     <Navbar expand="md" className="navbar-transparent fixed-top">
@@ -52,7 +39,7 @@ const MyNavbar: React.FC = () => {
         </Collapse>
       </Container>
     </Navbar>
-  );
-};
+  )
+}
 
-export default MyNavbar;
+export default MyNavbar

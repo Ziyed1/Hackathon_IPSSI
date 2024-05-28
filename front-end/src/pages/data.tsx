@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Table } from 'reactstrap';
-import '../index.css';
-import axios from "axios";
-import { JOGame } from '../helpers/interface';
+import React, { useState, useEffect } from 'react'
+import { Container, Table } from 'reactstrap'
+import '../index.css'
+import axios from 'axios'
+import { JOGame } from '../helpers/interface'
 
 const DataPage: React.FC = () => {
   const [JOgames, setJOGames] = useState<JOGame[]>([])
 
   // Requêtage du server
   useEffect(() => {
-    axios.get('http://localhost:8080/games')
-      .then(response => {
+    axios
+      .get('http://localhost:8080/games')
+      .then((response) => {
         // Stockage des données récupérées dans la variable "JOGames"
-        setJOGames(response.data);
+        setJOGames(response.data)
       })
-      .catch(error => {
-        console.error('There was an error fetching the games data!', error);
-      });
-  }, []);
+      .catch((error) => {
+        console.error('There was an error fetching the games data!', error)
+      })
+  }, [])
 
   return (
     <div className="data-page">
@@ -35,7 +36,7 @@ const DataPage: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {JOgames.slice(0, 10).map(game => (
+            {JOgames.slice(0, 10).map((game) => (
               <tr key={game.index}>
                 <td>{new Date(game.game_start_date).toLocaleDateString()}</td>
                 <td>{new Date(game.game_end_date).toLocaleDateString()}</td>
@@ -49,7 +50,7 @@ const DataPage: React.FC = () => {
         </Table>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default DataPage;
+export default DataPage
