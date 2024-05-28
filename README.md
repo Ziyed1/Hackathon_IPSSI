@@ -15,3 +15,30 @@ Le notebook de Machine Learning est disponible dans le dossier `./notebooks/mach
 
 ### Spark
 Le notebook de Spark est disponible dans le dossier `./volume_spark/spark_data_treatment.py`.
+
+## API Flask
+
+L'API Flask est disponible dans le dossier `./back-end/` et s'appelle `main.py`.
+
+### Lancer l'API
+
+```bash
+cd back-end
+pip install -r requirements.txt
+python main.py
+```
+
+### Routes API
+
+- `/games` : Renvoie la liste des jeux olympiques
+  - '/predict' : Renvoie la prédiction des prochaines médailles gagnées selon les statistiques en input
+    - example body :
+    ```json
+     "sports": 43,
+     "epreuves": 234,
+     "game_part": 27,
+     "prec_game_medal": 113,
+     "prec_game_gold": 39,
+     "prec_game_silver": 41,
+     "prec_game_bronze": 33
+  ```
