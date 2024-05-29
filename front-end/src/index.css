@@ -185,6 +185,57 @@ code {
     color: #721c24;
 }
 
+/* Analysis page */
+.impact-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.impact-table th,
+.impact-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.impact-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.impact-table tr:hover {
+    background-color: #ddd;
+}
+
+.impact-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.impacted {
+    background-color: #ffdddd!important;
+}
+
+.analysis-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.analysis-container > p {
+    width: 100%;
+    text-align: justify;
+}
+
+.analysis-container> table {
+    margin: 0 auto;
+    table-layout: fixed;
+    width: 100%;
+}
+
 @media (max-width: 1000px) {
     .prediction-container {
         flex-direction: column;

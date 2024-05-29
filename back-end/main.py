@@ -43,6 +43,18 @@ def get_games():
     return jsonify(games)
 
 
+# Route to retrieve data from the "olympic_hosts" table
+@app.route('/hosts', methods=['GET'])
+def get_hosts():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute('SELECT * FROM olympic_hosts')
+    hosts = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(hosts)
+
+
 # New route for making predictions
 @app.route('/predict', methods=['POST'])
 def predict():

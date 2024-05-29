@@ -6,6 +6,7 @@ import ProjectSummary from './components/projectsummary'
 import TeamPresentation from './components/team'
 import DataPage from '../src/pages/data'
 import PredictionPage from './components/prediction/prediction'
+import AnalysisPage from './components/analysis/analysis'
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Route path="/#about" element={<ProjectSummary />} />
           <Route path="/#contact" element={<TeamPresentation />} />
           <Route path="/prediction" element={<PredictionPage />} />
+          <Route path="/analyses" element={<AnalysisPage />} />
         </Routes>
       </Layout>
     </Router>
