@@ -14,9 +14,10 @@ interface GameData {
 
 const AnalysisPage: React.FC = () => {
   const [data, setData] = useState<GameData[]>([])
+  const [showRows, setShowRows] = useState(false)
 
   useEffect(() => {
-    fetch('http://localhost:8080/hosts') // Replace with your actual API path
+    fetch('http://localhost:8080/games') // Replace with your actual API path
       .then(response => response.json())
       .then(data => setData(data))
   }, [])
@@ -51,6 +52,7 @@ const AnalysisPage: React.FC = () => {
   return (
     <div className="prediction-wrapper">
       <h2>Un peu d'histoire</h2>
+      <h4>Impact des événements mondiaux sur les Jeux olympiques</h4>
       <div className="analysis-container">
         <p>
           Tout au long de l'histoire, les Jeux olympiques ont connu d'importantes perturbations en raison d'événements
@@ -59,6 +61,9 @@ const AnalysisPage: React.FC = () => {
           De même, la Seconde Guerre mondiale (1939-1945) a entraîné l'annulation des Jeux de 1940 et 1944.
           Plus récemment, la pandémie de COVID-19 a entraîné le report des Jeux olympiques de Tokyo 2020 à 2021.
         </p>
+        <button onClick={() => setShowRows(!showRows)}>
+          {showRows ? 'Cacher' : 'Afficher'} les détails
+        </button>
         <table className="impact-table">
           <thead>
           <tr>
@@ -67,7 +72,7 @@ const AnalysisPage: React.FC = () => {
             <th>Événement marquant</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody style={{ display: showRows ? 'table-row-group' : 'none' }}>
           {impactedData.map((item, index) => (
             <tr key={index} className={item.impact ? 'impacted' : ''}>
               <td>{item.year}</td>

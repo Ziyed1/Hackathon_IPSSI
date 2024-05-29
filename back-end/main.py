@@ -43,16 +43,36 @@ def get_games():
     return jsonify(games)
 
 
-# Route to retrieve data from the "olympic_hosts" table
-@app.route('/hosts', methods=['GET'])
-def get_hosts():
+# Route to retrieve data from the "olympic_results" table
+@app.route('/results', methods=['GET'])
+def get_results():
+    # Get pagination parameters from the request
+    page = request.args.get('page', default=1, type=int)
+    page_size = request.args.get('page_size', default=10, type=int)
+
+    offset = (page - 1) * page_size
+
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute('SELECT * FROM olympic_hosts')
-    hosts = cursor.fetchall()
+
+    cursor.execute('SELECT COUNT(*) as total FROM olympic_results')
+    total_results = cursor.fetchone()['total']
+
+    cursor.execute('SELECT * FROM olympic_results LIMIT %s OFFSET %s', (page_size, offset))
+    results = cursor.fetchall()
+
     cursor.close()
     conn.close()
-    return jsonify(hosts)
+
+    response = {
+        'page': page,
+        'page_size': page_size,
+        'total_results': total_results,
+        'total_pages': (total_results + page_size - 1) // page_size,
+        'results': results
+    }
+
+    return jsonify(response)
 
 
 # New route for making predictions
