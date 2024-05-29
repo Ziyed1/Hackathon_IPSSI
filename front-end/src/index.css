@@ -34,29 +34,29 @@ code {
 
 /* Navbar */
 .navbar-transparent {
-    background-color: transparent;
-    box-shadow: none;
-    transition: all 0.5s ease;
+  background-color: transparent;
+  box-shadow: none;
+  transition: all 0.5s ease;
 }
 
 .navbar-scrolled {
-    background-color: #fff;
-    border-bottom: 1px solid rgba(0,0,0,.15);
-    transition: all 0.5s ease;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  transition: all 0.5s ease;
 }
 
 .navbar-scrolled :is(.navbar-brand, .navbar-nav .nav-link) {
-    color: #212529;
+  color: #212529;
 }
 
 .navbar-nav .nav-link {
-    color: white; /* Assurez-vous que les liens sont visibles sur l'image de fond */
-    transition: color 0.5s ease;
+  color: white; /* Assurez-vous que les liens sont visibles sur l'image de fond */
+  transition: color 0.5s ease;
 }
 
 .navbar-brand {
-    color: white; /* Assurez-vous que le brand est visible sur l'image de fond */
-    transition: color 0.5s ease;
+  color: white; /* Assurez-vous que le brand est visible sur l'image de fond */
+  transition: color 0.5s ease;
 }
 
 .navbar-toggler {
@@ -65,6 +65,10 @@ code {
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-scrolled .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 /*  Projet  */
@@ -327,4 +331,5 @@ h4 {
 select {
   display: block;
   margin: 10px auto;
+  max-width: 100%;
 }
