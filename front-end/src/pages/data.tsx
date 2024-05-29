@@ -68,65 +68,62 @@ const DataPage: React.FC = () => {
         <h2>Les 10 derniers hôte des JO</h2>
         <Table bordered>
           <thead>
-          <tr>
-            <th>Date de début</th>
-            <th>Date de fin</th>
-            <th>Localisation</th>
-            <th>Nom</th>
-            <th>Saison</th>
-            <th>Année</th>
-          </tr>
+            <tr>
+              <th>Date de début</th>
+              <th>Date de fin</th>
+              <th>Localisation</th>
+              <th>Nom</th>
+              <th>Saison</th>
+              <th>Année</th>
+            </tr>
           </thead>
           <tbody>
-          {JOgames.slice(0, 10).map((game) => (
-            <tr key={game.index}>
-              <td>{new Date(game.game_start_date).toLocaleDateString()}</td>
-              <td>{new Date(game.game_end_date).toLocaleDateString()}</td>
-              <td>{game.game_location}</td>
-              <td>{game.game_name}</td>
-              <td>{game.game_season}</td>
-              <td>{game.game_year}</td>
-            </tr>
-          ))}
+            {JOgames.slice(0, 10).map((game) => (
+              <tr key={game.index}>
+                <td>{new Date(game.game_start_date).toLocaleDateString()}</td>
+                <td>{new Date(game.game_end_date).toLocaleDateString()}</td>
+                <td>{game.game_location}</td>
+                <td>{game.game_name}</td>
+                <td>{game.game_season}</td>
+                <td>{game.game_year}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
 
         <h2>Résultats des Jeux Olympiques</h2>
         <Table bordered>
           <thead>
-          <tr>
-            <th>Pays</th>
-            <th>Discipline</th>
-            <th>Événement</th>
-            <th>Position</th>
-            <th>Médaille</th>
-          </tr>
+            <tr>
+              <th>Pays</th>
+              <th>Discipline</th>
+              <th>Événement</th>
+              <th>Position</th>
+              <th>Médaille</th>
+            </tr>
           </thead>
           <tbody>
-          {results.map((result, index) => (
-            <tr key={index}>
-              <td>{result.country_name}</td>
-              <td>{result.discipline_title}</td>
-              <td>{result.event_title}</td>
-              <td>{result.rank_position}</td>
-              <td>{result.medal_type}</td>
-            </tr>
-          ))}
+            {results.map((result, index) => (
+              <tr key={index}>
+                <td>{result.country_name}</td>
+                <td>{result.discipline_title}</td>
+                <td>{result.event_title}</td>
+                <td>{result.rank_position}</td>
+                <td>{result.medal_type}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
 
         <div className="pagination">
-          <Button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
+          <Button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>
             Précédent
           </Button>
-          <span> Page {currentPage} de {totalPages} </span>
-          <Button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
+          <span>
+            {' '}
+            Page {currentPage} de {totalPages}{' '}
+          </span>
+          <Button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)}>
             Suivant
           </Button>
         </div>
