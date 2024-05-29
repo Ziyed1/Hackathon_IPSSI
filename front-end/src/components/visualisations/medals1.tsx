@@ -52,7 +52,9 @@ const MedalChart: React.FC = () => {
   return (
     <div className="chart-container">
       <h2 className="chart-title">Les 10 pays ayant gagné le plus de médailles olympiques depuis la création des JO (1896 - 2022)</h2>
-      <Bar data={data} options={options} />
+      <div className="bar-wrapper">
+        <Bar data={data} options={options} />
+      </div>
       <div className="chart-description">
         <p>Le graphique ci-dessus montre le nombre total de médailles olympiques remportées par les 10 meilleurs pays. Les données sont basées sur les derniers enregistrements disponibles.</p>
         <p>Chaque barre représente le total des médailles d'un pays, y compris les médailles d'or, d'argent et de bronze. Les données sont classées par ordre décroissant, mettant en évidence les pays ayant obtenu les plus hauts résultats aux Jeux olympiques.</p>

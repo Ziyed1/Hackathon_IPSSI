@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import '../index.css' // Importer un fichier CSS pour les styles supplémentaires
 
@@ -9,8 +9,27 @@ const MyNavbar: React.FC = () => {
   const toggle = () => setIsOpen(!isOpen)
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <Navbar expand="md" className="navbar-transparent fixed-top">
+    <Navbar expand="md" className={`navbar-transparent fixed-top ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <Container>
         <NavbarBrand href="/">OLYMPICS</NavbarBrand>
         <NavbarToggler onClick={toggle} />

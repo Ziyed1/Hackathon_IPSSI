@@ -50,9 +50,11 @@ const MedalChartLast10: React.FC = () => {
   };
 
   return (
-    <div className="chart-container2">
+    <div className="chart-container">
       <h2 className="chart-title">Les 10 pays ayant gagné le plus de médailles durant les 10 dernières éditions</h2>
-      <Bar data={data} options={options} />
+      <div className="bar-wrapper">
+        <Bar data={data} options={options} />
+      </div>
       <div className="chart-description">
         <p>Le graphique ci-dessus montre le nombre total de médailles olympiques remportées par les 10 meilleurs pays lors des 10 dernières éditions des Jeux Olympiques.</p>
         <p>Chaque barre représente le total des médailles d'un pays, y compris les médailles d'or, d'argent et de bronze. Les données sont classées par ordre décroissant, mettant en évidence les pays ayant obtenu les plus hauts résultats lors des récents Jeux olympiques.</p>

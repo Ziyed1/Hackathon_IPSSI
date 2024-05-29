@@ -65,14 +65,16 @@ const MedalChartByCountry: React.FC = () => {
   };
 
   return (
-    <div className="chart-container3">
+    <div className="chart-container">
       <h2 className="chart-title">Nombre de médailles total par type pour le pays sélectionné</h2>
       <select value={selectedCountry} onChange={e => setSelectedCountry(e.target.value)}>
         {countries.map(country => (
           <option key={country} value={country}>{country}</option>
         ))}
       </select>
-      <Bar data={data} options={options} />
+      <div className="bar-wrapper">
+        <Bar data={data} options={options} />
+      </div>
       <div className="chart-description">
         <p>Le graphique montre le nombre de médailles d'or, d'argent et de bronze remportées par le pays sélectionné.</p>
       </div>
