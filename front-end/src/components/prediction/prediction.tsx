@@ -116,9 +116,15 @@ const PredictionPage: React.FC = () => {
         {prediction && (
           <div className="prediction-result">
             <h3>Résultats de la prédiction</h3>
-            <p>Médailles d'or: <span>{Math.trunc(prediction.predicted_gold)}</span></p>
-            <p>Médailles d'argent: <span>{Math.trunc(prediction.predicted_silver)}</span></p>
-            <p>Médailles de bronze: <span>{Math.trunc(prediction.predicted_bronze)}</span></p>
+            <p>
+              Médailles d'or: <span>{Math.trunc(prediction.predicted_gold)}</span>
+            </p>
+            <p>
+              Médailles d'argent: <span>{Math.trunc(prediction.predicted_silver)}</span>
+            </p>
+            <p>
+              Médailles de bronze: <span>{Math.trunc(prediction.predicted_bronze)}</span>
+            </p>
           </div>
         )}
         {error && <div className="error-message">{error}</div>}
