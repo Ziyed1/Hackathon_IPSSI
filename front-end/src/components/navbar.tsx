@@ -24,7 +24,7 @@ const MyNavbar: React.FC = () => {
                 Visualisations
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem href="/visualisation1">Visualisation 1</DropdownItem>
+                <DropdownItem href="/medalVizualisation">Visualisation sur les médailles</DropdownItem>
                 <DropdownItem href="/visualisation2">Visualisation 2</DropdownItem>
                 <DropdownItem href="/visualisation3">Visualisation 3</DropdownItem>
               </DropdownMenu>

@@ -42,6 +42,84 @@ def get_games():
     conn.close()
     return jsonify(games)
 
+# Route to retrieve data from the "olympic_medals" table
+@app.route('/medals', methods=['GET'])
+def get_medals():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute('SELECT country_name, COUNT(*) as total_medals FROM olympic_medals GROUP BY country_name ORDER BY total_medals DESC')
+    medals = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(medals)
+
+# Route to retrieve the last 10 editions of the Olympic Games
+@app.route('/medals_last_10', methods=['GET'])
+def get_medals_last_10():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    
+    # Subquery to get the last 10 distinct games
+    cursor.execute('''
+        SELECT DISTINCT slug_game
+        FROM olympic_medals
+        ORDER BY slug_game DESC
+        LIMIT 10
+    ''')
+    recent_games = cursor.fetchall()
+    recent_games_list = [row['slug_game'] for row in recent_games]
+    
+    # Create a placeholder string for the number of recent games
+    placeholders = ', '.join(['%s'] * len(recent_games_list))
+    
+    # Main query to get the total medals per country for the last 10 games
+    query = f'''
+        SELECT country_name, COUNT(*) as total_medals
+        FROM olympic_medals
+        WHERE slug_game IN ({placeholders})
+        GROUP BY country_name
+        ORDER BY total_medals DESC
+    '''
+    
+    cursor.execute(query, recent_games_list)
+    medals = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(medals)
+
+# Route to retrieve the countries
+@app.route('/countries', methods=['GET'])
+def get_countries():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute('SELECT DISTINCT country_name FROM olympic_medals')
+    countries = [row['country_name'] for row in cursor.fetchall()]
+    cursor.close()
+    conn.close()
+    return jsonify(countries)
+
+# Route to retrieve the medals type for each countrie
+@app.route('/medals_by_country', methods=['GET'])
+def get_medals_by_country():
+    country = request.args.get('country')
+    if not country:
+        return jsonify({"error": "No country specified"}), 400
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute('''
+        SELECT 
+            SUM(CASE WHEN medal_type = 'GOLD' THEN 1 ELSE 0 END) AS gold,
+            SUM(CASE WHEN medal_type = 'SILVER' THEN 1 ELSE 0 END) AS silver,
+            SUM(CASE WHEN medal_type = 'BRONZE' THEN 1 ELSE 0 END) AS bronze
+        FROM olympic_medals
+        WHERE country_name = %s
+    ''', (country,))
+    medals = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return jsonify(medals)
+
 
 # Route to retrieve data from the "olympic_results" table
 @app.route('/results', methods=['GET'])
