@@ -10,6 +10,8 @@ Il contient le code pour l'entraînement de 3 modèles de Deep Learning:
 - Un CNN
 - Un DNN
 
+En ce qui concerne le modèle ANN, le notebook est également situé dans le même dossier et est nommé 'ann.ipynb'.
+
 ### Machine Learning
 Le notebook de Machine Learning est disponible dans le dossier `./machinelearning/` et s'appelle `train_ml.ipynb`.
 
