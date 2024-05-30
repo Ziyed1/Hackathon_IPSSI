@@ -42,7 +42,7 @@ const PredictionPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const response = await fetch('http://localhost:8080/predict', {
+      const response = await fetch('http://ipssihackathon.eu-4.evennode.com/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const AnalysisPage: React.FC = () => {
   const [showRows, setShowRows] = useState(false)
 
   useEffect(() => {
-    fetch('http://localhost:8080/games') // Replace with your actual API path
+    fetch('http://ipssihackathon.eu-4.evennode.com/games') // Replace with your actual API path
       .then((response) => response.json())
       .then((data) => setData(data))
   }, [])

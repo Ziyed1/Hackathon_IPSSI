@@ -22,7 +22,7 @@ const MedalChartByCountry: React.FC = () => {
   useEffect(() => {
     // Récupérer la liste des pays
     axios
-      .get('http://localhost:8080/countries')
+      .get('http://ipssihackathon.eu-4.evennode.com/countries')
       .then((response) => {
         setCountries(response.data)
       })
@@ -35,7 +35,7 @@ const MedalChartByCountry: React.FC = () => {
     // Récupérer les données des médailles pour le pays sélectionné
     if (selectedCountry) {
       axios
-        .get(`http://localhost:8080/medals_by_country?country=${selectedCountry}`)
+        .get(`http://ipssihackathon.eu-4.evennode.com/medals_by_country?country=${selectedCountry}`)
         .then((response) => {
           setMedalData(response.data)
         })

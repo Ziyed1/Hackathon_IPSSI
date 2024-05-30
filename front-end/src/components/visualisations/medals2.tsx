@@ -18,7 +18,7 @@ const MedalChartLast10: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/medals_last_10')
+      .get('http://ipssihackathon.eu-4.evennode.com/medals_last_10')
       .then((response) => {
         const sortedData = response.data.sort((a: MedalData, b: MedalData) => b.total_medals - a.total_medals)
         const top10Data = sortedData.slice(0, 10)

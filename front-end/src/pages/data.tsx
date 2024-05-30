@@ -32,7 +32,7 @@ const DataPage: React.FC = () => {
   // Requêtage du serveur pour les JO
   useEffect(() => {
     axios
-      .get('http://localhost:8080/games')
+      .get('http://ipssihackathon.eu-4.evennode.com/games')
       .then((response) => {
         // Stockage des données récupérées dans la variable "JOGames"
         setJOGames(response.data)
@@ -45,7 +45,7 @@ const DataPage: React.FC = () => {
   // Requêtage du serveur pour les résultats avec pagination
   const fetchResults = (page: number) => {
     axios
-      .get(`http://localhost:8080/results?page=${page}&page_size=10`)
+      .get(`http://ipssihackathon.eu-4.evennode.com/results?page=${page}&page_size=10`)
       .then((response) => {
         // Stockage des résultats et mise à jour de la pagination
         setResults(response.data.results.sort((a: Result, b: Result) => a.country_name.localeCompare(b.country_name)))
