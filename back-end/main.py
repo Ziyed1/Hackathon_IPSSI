@@ -58,7 +58,7 @@ def get_medals():
 def get_medals_last_10():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    
+
     # Subquery to get the last 10 distinct games
     cursor.execute('''
         SELECT DISTINCT slug_game
@@ -68,10 +68,10 @@ def get_medals_last_10():
     ''')
     recent_games = cursor.fetchall()
     recent_games_list = [row['slug_game'] for row in recent_games]
-    
+
     # Create a placeholder string for the number of recent games
     placeholders = ', '.join(['%s'] * len(recent_games_list))
-    
+
     # Main query to get the total medals per country for the last 10 games
     query = f'''
         SELECT country_name, COUNT(*) as total_medals
@@ -80,7 +80,7 @@ def get_medals_last_10():
         GROUP BY country_name
         ORDER BY total_medals DESC
     '''
-    
+
     cursor.execute(query, recent_games_list)
     medals = cursor.fetchall()
     cursor.close()
@@ -192,4 +192,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=os.getenv('PORT', 8080))
