@@ -70,5 +70,5 @@ L'API est accessible sur `http://localhost:8080/`.
 
 Il faut la version Premium pour que le Trello soit visible aux observateurs.
 
-Le lien vers le tableau Trello est le suivant : ![img_1.png](img_1.png)
+Le lien vers le tableau Trello est le suivant : ![img.png](img.png)
 
