@@ -1,5 +1,12 @@
 # Hackathon MIA7
 
+## App live
+
+Front : https://hackathon-ipssi.vercel.app/
+Back : http://ipssihackathon.eu-4.evennode.com/games
+
+Il faut payer pour etre en SSL sur le Back, donc pas possible ici, et nous n'avions plus de credits azure, mais tout fonctionne normalement indépendemment.
+
 ## Notebooks
 
 ### Deeplearning
